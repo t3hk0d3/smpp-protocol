@@ -2,6 +2,8 @@ require "smpp/protocol/version"
 
 module Smpp
   module Protocol
-    # Your code goes here...
+
+    require_relative 'protocol/pdu_stream'
+
   end
 end

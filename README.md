@@ -49,10 +49,13 @@ pdu.destination.type_of_number
 # Short Message Handling
 
 pdu.data_coding
-# => 8 # UCS-2
+# => 'UCS-2'
+
+pdu.raw_data_coding
+# => 8
 
 pdu.message
-# => "Hello World!" # Decoded using data_coding property
+# => "Hello World!" # Decode short_message using data_coding property, returns raw message if data_conding is unknown
 
 pdu.raw_message
 # => "\x00H\x00e\x00l\x00l\x00o\x00 \x00W\x00o\x00r\x00l\x00d\x00!" # 'Hello World!' encoded in USC-2 in ASCII
@@ -90,7 +93,7 @@ require 'smpp/protocol'
 
 pdu = SMPP::Protocol::PDU::SubmitSM.new(
   message: 'Hello World!',
-  data_coding: :ucs2,
+  data_coding: 'UCS-2',
   optional_params: [
     SMPP::Protocol::TLV::UssdServiceOp.new(value: :ussr_response),
     SMPP::Protocol::TLV::MessagePayload.new(value: 'Hello World!')

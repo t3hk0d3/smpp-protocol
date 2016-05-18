@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Igor Yamolov"]
   spec.email         = ["iyamolov@spbtv.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{SMPP 5.0 native ruby implementation}
+  spec.description   = %q{Native Ruby implementation of SMPP 5.0 protocol}
+  spec.homepage      = "https://github.com/t3hk0d3/smpp-protocol"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^spec/}) }
   spec.bindir        = "exe"
@@ -20,5 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rspec", "~> 3.4"
 end

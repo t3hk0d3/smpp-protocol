@@ -92,7 +92,6 @@ require 'smpp/protocol'
 
 
 pdu = SMPP::Protocol::PDU::SubmitSM.new(
-  message: 'Hello World!',
   data_coding: 'UCS-2',
   optional_params: [
     SMPP::Protocol::TLV::UssdServiceOp.new(value: :ussr_response),
@@ -106,7 +105,16 @@ pdu.source_address = '9999'
 pdu.source_ton = :alphanumeric
 pdu.source_npi = 0 # Unknown
 
-# Encode PDU to binary string
+# Message might be a Proc and would be evaluated only getter invoke or encoding
+pdu.message = -> () { generate_message }
+
+# Message would be encoded using specified data_coding or left as is (if data_coding is unknown)
+# If message size is more than 255 bytes it would be automatically moved to `message_payload` TLV.
+# To prevent that assign raw_message, it would be truncated to 255 symbols and not automatically encoded
+
+pdu.raw_message = -> () { generate_raw_message }
+
+# Encode PDU to binary string (in actually uses StringIO)
 pdu.encode # aka pdu.to_binary
 # => "\x04\x12\x04\x30\x04\x48...."
 

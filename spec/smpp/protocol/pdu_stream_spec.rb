@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe Smpp::Protocol::PDUStream do
-
   let(:io) { StringIO.new }
 
   subject(:stream) { described_class.new(io) }
 
-  describe 'read' do
+  context 'read' do
     let(:io) { StringIO.new([buffer].pack('H*')) }
 
     describe '#read_byte' do
@@ -18,13 +17,13 @@ describe Smpp::Protocol::PDUStream do
     describe '#read_short' do
       let(:buffer) { 'FDE8' }
 
-      specify { expect(subject.read_short).to eq(65000) }
+      specify { expect(subject.read_short).to eq(65_000) }
     end
 
     describe '#read_integer' do
       let(:buffer) { 'FFFFFFFF' }
 
-      specify { expect(subject.read_integer).to eq(4294967295) }
+      specify { expect(subject.read_integer).to eq(4_294_967_295) }
     end
 
     describe '#read_cstring' do
@@ -40,7 +39,7 @@ describe Smpp::Protocol::PDUStream do
     end
   end
 
-  describe 'write' do
+  context 'write' do
     subject { io.string.unpack('H*').first.upcase }
 
     describe '#write_byte' do
@@ -53,7 +52,7 @@ describe Smpp::Protocol::PDUStream do
 
     describe '#write_short' do
       before do
-        stream.write_short(65000)
+        stream.write_short(65_000)
       end
 
       specify { is_expected.to eq('FDE8') }
@@ -61,7 +60,7 @@ describe Smpp::Protocol::PDUStream do
 
     describe '#write_integer' do
       before do
-        stream.write_integer(4294967295)
+        stream.write_integer(4_294_967_295)
       end
 
       specify { is_expected.to eq('FFFFFFFF') }

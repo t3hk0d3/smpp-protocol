@@ -1,13 +1,11 @@
-require 'thread'
-
 module Smpp
   module Protocol
+    # :nodoc:
     class PDUStream
       ZERO_BYTE = "\x0".freeze
 
       def initialize(io)
         @io = io
-        @mutex = Mutex.new
       end
 
       def read_byte
@@ -24,7 +22,7 @@ module Smpp
 
       def read_cstring
         result = ''
-        while((buf = read(1)) != ZERO_BYTE)
+        while (buf = read(1)) != ZERO_BYTE
           result += buf
         end
         result
@@ -54,18 +52,12 @@ module Smpp
         write(value)
       end
 
-      private
-
       def read(length)
-        @mutex.synchronize do
-          @io.read(length)
-        end
+        @io.read(length)
       end
 
       def write(buffer)
-        @mutex.synchronize do
-          @io.write(buffer)
-        end
+        @io.write(buffer)
       end
     end
   end

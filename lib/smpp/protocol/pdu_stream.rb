@@ -33,19 +33,19 @@ module Smpp
       end
 
       def write_byte(value)
-        write([value].pack('C'))
+        write([value.to_i].pack('C'))
       end
 
       def write_short(value)
-        write([value].pack('n'))
+        write([value.to_i].pack('n'))
       end
 
       def write_integer(value)
-        write([value].pack('N'))
+        write([value.to_i].pack('N'))
       end
 
       def write_cstring(value)
-        write([value].pack('Z*'))
+        write([value.to_s].pack('Z*'))
       end
 
       def write_string(value)

@@ -1,4 +1,4 @@
-require 'mutex'
+require 'thread'
 
 module Smpp
   module Protocol

@@ -2,7 +2,7 @@ module Smpp
   module Protocol
     module PDU
       # :nodoc:
-      class GenericNack < AbstractPDU
+      class GenericNack < CommandPDU
         register generic_nack: 0x80000000
       end
     end

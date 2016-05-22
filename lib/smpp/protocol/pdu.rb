@@ -24,6 +24,9 @@ module Smpp
       end
 
       require_relative 'pdu/abstract_pdu'
+      require_relative 'pdu/command_pdu'
+      require_relative 'pdu/response_pdu'
+
       require_relative 'pdu/bind_receiver'
       require_relative 'pdu/bind_transmitter'
       require_relative 'pdu/query_sm'

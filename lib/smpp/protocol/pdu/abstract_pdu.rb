@@ -1,20 +1,20 @@
+require 'smpp/protocol/pdu_builder'
+
 module Smpp
   module Protocol
     module PDU
       # :nodoc:
       class AbstractPDU
-        def self.register(params)
-          @command_name, @command_id = params.first
+        class << self
+          attr_reader :command_id, :command_name
 
-          PDU.register_pdu(@command_name, @command_id, self)
-        end
+          def register(params, &block)
+            @command_name, @command_id = params.first
 
-        def self.command_id
-          @command_id
-        end
+            @builder = PDUBuilder.new(self, &block)
 
-        def self.command_name
-          @command_name
+            PDU.register_pdu(@command_name, @command_id, self)
+          end
         end
       end
     end

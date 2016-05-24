@@ -5,8 +5,29 @@ module Smpp
     module PDU
       # :nodoc:
       class AbstractPDU
+        attr_reader :fields
+
+        def initialize(params = {})
+          @fields = self.class.builder.build(self)
+          @fields_by_name = {}
+
+          @fields.each do |field|
+            @fields_by_name[field.name] = field
+
+            field.set(params[field.name]) if params.key?(field.name)
+          end
+        end
+
+        def field(name)
+          @fields_by_name[name.to_sym]
+        end
+
+        def inspect
+          "<#{self.class.name}>"
+        end
+
         class << self
-          attr_reader :command_id, :command_name
+          attr_reader :command_id, :command_name, :builder
 
           def register(params, &block)
             @command_name, @command_id = params.first

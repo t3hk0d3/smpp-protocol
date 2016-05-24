@@ -23,7 +23,7 @@ module Smpp
 
           pdu.byte :sm_default_msg_id
 
-          pdu.sme_address source_address: :source_addr
+          pdu.sme_address :source_address, :source_addr
         end
       end
     end

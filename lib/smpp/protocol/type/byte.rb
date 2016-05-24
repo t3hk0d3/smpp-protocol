@@ -11,18 +11,6 @@ module Smpp
           @value = options.fetch(:default, 0)
         end
 
-        def get
-          @value
-        end
-
-        alias raw_get get
-
-        def set(value)
-          @value = value
-        end
-
-        alias raw_set set
-
         def write(io)
           io.write_byte(@value)
         end

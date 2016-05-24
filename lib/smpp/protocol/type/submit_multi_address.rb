@@ -12,11 +12,11 @@ module Smpp
           @value  = options.fetch(:default, [])
         end
 
-        def get
+        def value
 
         end
 
-        def set(value)
+        def value=(value)
 
         end
 

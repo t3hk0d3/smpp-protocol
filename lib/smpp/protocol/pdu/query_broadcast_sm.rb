@@ -10,7 +10,7 @@ module Smpp
           pdu.numbering_plan :source_addr_npi
           pdu.cstring        :source_addr, max_size: 21
 
-          pdu.sme_address source_address: :source_addr
+          pdu.sme_address    :source_address, :source_addr
         end
       end
     end

@@ -5,26 +5,22 @@ module Smpp
       class AbstractType
         attr_reader :pdu, :name, :options
 
+        attr_accessor :value
+
         def initialize(pdu, name, options = {})
           @pdu = pdu
           @name = name
           @options = options
+
+          @value = nil
         end
 
-        def get
-          raise 'NotImplemented!'
+        def raw_value
+          value
         end
 
-        def raw_get
-          raise 'NotImplemented!'
-        end
-
-        def set(_value)
-          raise 'NotImplemented!'
-        end
-
-        def raw_set(_value)
-          raise 'NotImplemented!'
+        def raw_value=(value)
+          self.value = value
         end
 
         def write(_io)
@@ -37,6 +33,10 @@ module Smpp
 
         def self.register_type(name)
           Type.register_type(name, self)
+        end
+
+        def inspect
+          "<#{self.class.name} #{name}>"
         end
       end
     end

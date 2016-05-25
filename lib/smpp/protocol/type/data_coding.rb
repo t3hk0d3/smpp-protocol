@@ -30,7 +30,20 @@ module Smpp
 
         register_type :data_coding
 
+        def value
+          SYMBOL_MAP.fetch(@value, @value)
+        end
 
+        def value=(value)
+          case value
+          when Symbol
+            @value = SYMBOL_MAP.fetch(value)
+          when String
+            @value = ENCODING_MAP.fetch(value, value.to_i)
+          when Fixnum
+            @value = value
+          end
+        end
       end
     end
   end

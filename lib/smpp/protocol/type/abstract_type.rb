@@ -10,17 +10,17 @@ module Smpp
         def initialize(pdu, name, options = {})
           @pdu = pdu
           @name = name
-          @options = options
+          @options = default_options.merge!(options)
 
           @value = nil
         end
 
         def raw_value
-          value
+          @value
         end
 
         def raw_value=(value)
-          self.value = value
+          @value = value
         end
 
         def write(_io)
@@ -33,6 +33,10 @@ module Smpp
 
         def self.register_type(name)
           Type.register_type(name, self)
+        end
+
+        def default_options
+          {}
         end
 
         def inspect

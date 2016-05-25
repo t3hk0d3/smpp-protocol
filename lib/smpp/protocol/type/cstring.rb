@@ -5,8 +5,6 @@ module Smpp
       class CString < AbstractType
         register_type :cstring
 
-        attr_accessor :value
-
         def initialize(pdu, name, options = {})
           super
 

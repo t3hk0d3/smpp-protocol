@@ -34,11 +34,11 @@ pdu = SMPP::Protocol.parse(buffer)
 
 # Address Handling
 
-pdu.source_address
+pdu.source_addr
 # => 79001234568
 
 pdu.source
-# => SMPP::Protocol::Address(address: 79001234568, ton: 1, npi: 0)
+# => SMPP::Protocol::SmeAddress(address: 79001234568, ton: 1, npi: 0)
 
 pdu.source.ton
 # => 1
@@ -99,7 +99,7 @@ pdu = SMPP::Protocol::PDU::SubmitSM.new(
   ]
 )
 
-pdu.destination = SMPP::Protocol::Address(address: 79001234568, ton: 1, npi: 0)
+pdu.destination = SMPP::Protocol::SmeAddress(address: 79001234568, ton: 1, npi: 0)
 
 pdu.source_address = '9999'
 pdu.source_ton = :alphanumeric

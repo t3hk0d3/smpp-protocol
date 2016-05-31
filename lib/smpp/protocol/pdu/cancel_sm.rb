@@ -16,8 +16,8 @@ module Smpp
           pdu.numbering_plan :dest_addr_npi
           pdu.cstring        :dest_addr, max_size: 21
 
-          pdu.sme_address    :source_address,       :source_addr
-          pdu.sme_address    :destination_address,  :dest_addr
+          pdu.sme_address    :source,       :source_addr
+          pdu.sme_address    :destination,  :dest_addr
         end
       end
     end

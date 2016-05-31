@@ -35,7 +35,7 @@ module Smpp
 
           pdu.string :short_message, :sm_length
 
-          pdu.sme_address :source_address, :source_addr
+          pdu.sme_address :source, :source_addr
         end
       end
     end

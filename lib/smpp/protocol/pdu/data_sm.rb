@@ -20,8 +20,8 @@ module Smpp
 
           pdu.data_coding :data_coding
 
-          pdu.sme_address    :source_address,       :source_addr
-          pdu.sme_address    :destination_address,  :dest_addr
+          pdu.sme_address    :source,       :source_addr
+          pdu.sme_address    :destination,  :dest_addr
         end
       end
     end

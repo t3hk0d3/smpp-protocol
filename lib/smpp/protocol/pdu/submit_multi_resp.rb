@@ -14,7 +14,7 @@ module Smpp
             field.cstring        :dest_addr, max_size: 21
             field.byte           :error_status_code
 
-            field.sme_address destination_address: :dest_addr
+            field.sme_address destination: :dest_addr
           end
         end
       end

@@ -7,7 +7,7 @@ It contains only SMPP entities (PDU) and parsing so it could be reused on differ
 
 There is already existing ``ruby-smpp`` gem, but its not maintained for few years and built upon EventMachine.
 
-## TODO
+## Development Roadmap
 
 - [x] SMPP data types
 - [x] PDU library

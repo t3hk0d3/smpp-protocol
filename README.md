@@ -3,7 +3,7 @@
 ## WARNING!! THIS GEM IS WORK IN PROGRESS. ITS UNUSEABLE BY THIS MOMENT
 
 SMPP Protocol is complete native ruby SMPP 5.0 implementation.
-It contains only SMPP entities (PDU) and parsing so it could be reused on different platforms. It doesnt implement any network clients, session handling and et cetera - its all up to you.
+It contains only SMPP entities (PDU) and parsing so it could be reused on different platforms. It doesnt implement any networking, session handling and et cetera - its all up to you.
 
 There is already existing ``ruby-smpp`` gem, but its not maintained for few years and built upon EventMachine.
 
